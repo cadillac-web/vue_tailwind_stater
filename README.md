@@ -37,3 +37,4 @@ npm run dev
 npm run build
 ```
 # vue_tailwind_stater
+# vue_tailwind_stater
