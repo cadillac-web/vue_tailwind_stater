@@ -1,7 +1,29 @@
-<script setup></script>
-
 <template>
-  <h1 class="bg-gray-500 text-white p-5">Hello Tailwind CSS!</h1>
+  <div>
+    <NavBar />
+    <HeroSection />
+    <ServicesSection />
+    <PortfolioSection />
+    <Footer />
+  </div>
 </template>
 
-<style scoped></style>
+<script setup>
+import { ref } from 'vue'
+import NavBar from './components/NavBar.vue'
+import HeroSection from './components/Hero.vue'
+import ServicesSection from './components/Services.vue'
+import PortfolioSection from './components/Portfolio.vue'
+import Footer from './components/Footer.vue'
+
+const portfolioRef = ref(null)
+
+function highlightWork() {
+  setTimeout(() => {
+    portfolioRef.value.isHighlighted = true
+    setTimeout(() => {
+      portfolioRef.value.isHighlighted = false
+    }, 2000)
+  }, 600)
+}
+</script>
