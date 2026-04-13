@@ -38,13 +38,13 @@
     <div class="featured-grid">
 
       <div class="featured-card">
-        <img src="/images/flyer1.png" alt="Flyer design">
-        <div class="featured-label">Flyer Design</div>
+        <img src="/images/logo6.png" alt="Logo design">
+        <div class="featured-label">Logo Design</div>
       </div>
 
       <div class="featured-card">
-        <img src="/images/logo6.png" alt="Logo design">
-        <div class="featured-label">Logo Design</div>
+        <img src="/images/flyer1.png" alt="Flyer design">
+        <div class="featured-label">Flyer Design</div>
       </div>
 
       <div class="featured-card">
