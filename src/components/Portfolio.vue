@@ -10,6 +10,7 @@
       <img src="/images/logo3.png" alt="Logo 3">
       <img src="/images/logo4.png" alt="Logo 4">
       <img src="/images/logo5.png" alt="Logo 5">
+       <img src="/images/logo6.png" alt="Logo 6">
     </div>
 
     <h3>Posters</h3>

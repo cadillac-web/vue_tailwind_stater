@@ -8,9 +8,9 @@
       <p>Logos, posters and flyers designed to help businesses stand out.</p>
 
       <div class="hero-buttons">
-        <a href="#work">
-          <button @click="emit('highlight')">View my work</button>
-        </a>
+        <RouterLink to="/work">
+          <button>View my work</button>
+        </RouterLink>
       </div>
 
       <div class="stats">
@@ -31,7 +31,6 @@
 </template>
 
 <script setup>
-const emit = defineEmits(['highlight'])
 </script>
 
 <style scoped>
@@ -79,7 +78,7 @@ const emit = defineEmits(['highlight'])
   flex-wrap: wrap;
 }
 .stat {
-  background: rgba(255, 255, 255, 0.05);
+  background: #cc0060;
   padding: 15px 25px;
   border-radius: 10px;
   backdrop-filter: blur(10px);

@@ -16,4 +16,13 @@ body {
     radial-gradient(circle at 80% 70%, #6a00ff 0%, transparent 40%),
     #0a0a15;
   color: white;
+  transition: 0.3s;
+}
+
+body.light {
+  background:
+    radial-gradient(circle at 20% 30%, #ffb3d9 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, #c9a0ff 0%, transparent 40%),
+    #f5f5f5;
+  color: #0a0a15;
 }
