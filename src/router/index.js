@@ -13,6 +13,9 @@ const router = createRouter({
     { path: '/work', component: Portfolio },
     { path: '/contact', component: Contact }
   ],
+  scrollBehavior() {
+    return { top: 0 }
+  }
 })
 
 export default router
