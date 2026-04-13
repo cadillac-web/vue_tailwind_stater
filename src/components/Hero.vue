@@ -24,12 +24,12 @@
     </div>
 
     <div class="hero-image">
-      <img src="/images/style.png" alt="Ivy Creative">
+      <img src="/images/style.png" alt="Ivy Design">
     </div>
 
   </section>
 
-  <!-- FEATURED WORK SECTION -->
+  
   <section class="featured">
 
     <h2>Featured Work</h2>
