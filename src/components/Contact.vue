@@ -19,7 +19,7 @@
         <div class="icon">📧</div>
         <h3>Email</h3>
         <p>kibukaivy@gmail.com</p>
-        <a href="mailto:kibukaivy@gmail.com">
+        <a href="https://mail.google.com/mail/?view=cm&to=kibukaivy@gmail.com" target="_blank">
           <button>Send email</button>
         </a>
       </div>
@@ -92,8 +92,49 @@
   cursor: pointer;
   transition: 0.3s;
   font-size: 15px;
+  width: 100%;
+  max-width: 200px;
 }
 .contact-card button:hover {
   transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+  .contact-card button {
+    max-width: 100%;
+    padding: 14px 20px;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact {
+    padding: 40px 5%;
+  }
+  .contact h2 {
+    font-size: 36px;
+  }
+  .subtitle {
+    margin-bottom: 40px;
+    font-size: 16px;
+  }
+  .contact-cards {
+    gap: 15px;
+  }
+  .contact-card {
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact h2 {
+    font-size: 28px;
+  }
+  .contact-card h3 {
+    font-size: 18px;
+  }
+  .contact-card p {
+    font-size: 14px;
+  }
 }
 </style>

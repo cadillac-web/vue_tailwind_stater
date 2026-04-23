@@ -49,4 +49,33 @@
 .card:hover {
   transform: translateY(-8px);
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .services {
+    padding: 40px 5%;
+  }
+  .services h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  .service-grid {
+    gap: 15px;
+  }
+  .card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services h2 {
+    font-size: 24px;
+  }
+  .card h3 {
+    font-size: 18px;
+  }
+  .card p {
+    font-size: 14px;
+  }
+}
 </style>

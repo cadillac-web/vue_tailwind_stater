@@ -13,4 +13,11 @@ footer {
   padding: 40px;
   opacity: 0.6;
 }
+
+@media (max-width: 480px) {
+  footer {
+    padding: 30px 20px;
+    font-size: 14px;
+  }
+}
 </style>

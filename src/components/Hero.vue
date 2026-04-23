@@ -38,17 +38,17 @@
     <div class="featured-grid">
 
       <div class="featured-card">
-        <img src="/images/logo6.png" alt="Logo design">
+        <img src="/images/logo6.png" alt="Logo design" @click="openLightbox(0)">
         <div class="featured-label">Logo Design</div>
       </div>
 
       <div class="featured-card">
-        <img src="/images/flyer1.png" alt="Flyer design">
+        <img src="/images/flyer1.png" alt="Flyer design" @click="openLightbox(1)">
         <div class="featured-label">Flyer Design</div>
       </div>
 
       <div class="featured-card">
-        <img src="/images/poster4.png" alt="Poster design">
+        <img src="/images/poster4.png" alt="Poster design" @click="openLightbox(2)">
         <div class="featured-label">Poster Design</div>
       </div>
 
@@ -58,10 +58,56 @@
       <button class="see-all">See all work</button>
     </RouterLink>
 
+    <!-- Lightbox -->
+    <transition name="fade">
+      <div v-if="lightboxOpen" class="lightbox" @click="closeLightbox">
+        <button class="close-btn" @click.stop="closeLightbox">×</button>
+        <button class="nav-btn prev" @click.stop="prevImage">‹</button>
+        <img :src="featuredImages[currentIndex]" alt="Full size" @click.stop>
+        <button class="nav-btn next" @click.stop="nextImage">›</button>
+      </div>
+    </transition>
+
   </section>
 </template>
 
 <script setup>
+import { ref } from 'vue'
+
+const featuredImages = [
+  '/images/logo6.png',
+  '/images/flyer1.png',
+  '/images/poster4.png'
+]
+
+const lightboxOpen = ref(false)
+const currentIndex = ref(0)
+
+function openLightbox(index) {
+  currentIndex.value = index
+  lightboxOpen.value = true
+  document.body.style.overflow = 'hidden'
+}
+
+function closeLightbox() {
+  lightboxOpen.value = false
+  document.body.style.overflow = ''
+}
+
+function prevImage() {
+  currentIndex.value = (currentIndex.value - 1 + featuredImages.length) % featuredImages.length
+}
+
+function nextImage() {
+  currentIndex.value = (currentIndex.value + 1) % featuredImages.length
+}
+
+window.addEventListener('keydown', (e) => {
+  if (!lightboxOpen.value) return
+  if (e.key === 'Escape') closeLightbox()
+  if (e.key === 'ArrowLeft') prevImage()
+  if (e.key === 'ArrowRight') nextImage()
+})
 </script>
 
 <style scoped>
@@ -71,8 +117,9 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 80px 10%;
-  min-height: 80vh;
+  padding: 20px 10%;
+  margin-top: 40px;
+  min-height: 70vh;
 }
 .hero-text {
   flex: 1;
@@ -118,7 +165,7 @@
 
 /* FEATURED */
 .featured {
-  padding: 80px 10%;
+  padding: 20px 10%;
   text-align: center;
 }
 .featured h2 {
@@ -151,6 +198,7 @@
   height: 300px;
   object-fit: contain;
   padding: 10px;
+  cursor: pointer;
 }
 .featured-label {
   padding: 15px;
@@ -170,5 +218,125 @@
 }
 .see-all:hover {
   transform: scale(1.05);
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox img {
+  max-width: 90%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.2s;
+}
+.close-btn:hover { opacity: 1; }
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  font-size: 50px;
+  padding: 20px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.2s;
+  border-radius: 8px;
+}
+.nav-btn:hover { opacity: 1; background: rgba(255, 255, 255, 0.2); }
+.nav-btn.prev { left: 20px; }
+.nav-btn.next { right: 20px; }
+
+/* Transitions */
+.fade-enter-active, .fade-leave-active { transition: opacity 0.3s; }
+.fade-enter-from, .fade-leave-to { opacity: 0; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column-reverse;
+    padding: 20px 5%;
+    text-align: center;
+    min-height: auto;
+  }
+  .hero-text {
+    max-width: 100%;
+  }
+  .hero-image {
+    justify-content: center;
+  }
+  .hero-image img {
+    width: 300px;
+  }
+  .hero h2 {
+    font-size: 36px;
+  }
+  .stats {
+    justify-content: center;
+  }
+  .featured {
+    padding: 20px 5%;
+  }
+  .featured h2 {
+    font-size: 28px;
+  }
+  .nav-btn {
+    font-size: 30px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h2 {
+    font-size: 28px;
+  }
+  .hero p {
+    font-size: 14px;
+  }
+  .stats {
+    gap: 10px;
+  }
+  .stat {
+    padding: 10px 15px;
+    font-size: 13px;
+  }
+  .featured h2 {
+    font-size: 24px;
+  }
+  .featured-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+  }
+  .close-btn {
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+  }
+  .nav-btn {
+    font-size: 24px;
+    padding: 10px;
+  }
+  .nav-btn.prev { left: 5px; }
+  .nav-btn.next { right: 5px; }
 }
 </style>
