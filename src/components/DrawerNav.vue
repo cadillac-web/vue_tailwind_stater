@@ -9,12 +9,12 @@
 
     <!-- Backdrop -->
     <transition name="fade">
-      <div v-if="isOpen" class="backdrop" @click="closeDrawer"></div>
+      <div v-if="isOpen" class="backdrop" :class="{ 'dark-backdrop': isDark }" @click="closeDrawer"></div>
     </transition>
 
     <!-- Drawer -->
     <transition name="slide">
-      <aside v-if="isOpen" class="drawer">
+      <aside v-if="isOpen" class="drawer" :class="{ 'dark-drawer': isDark }">
 
         <!-- Header -->
         <div class="drawer-header">
@@ -143,9 +143,12 @@ window.addEventListener('keydown', (e) => {
 .backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(4px);
   z-index: 40;
+}
+.dark-backdrop {
+  background: rgba(0, 0, 0, 0.5);
 }
 
 /* Drawer */
@@ -158,8 +161,11 @@ window.addEventListener('keydown', (e) => {
   z-index: 50;
   display: flex;
   flex-direction: column;
-  background: var(--drawer-bg, #0f0f0f);
+  background: white;
   border-right: 1px solid rgba(255, 79, 216, 0.15);
+}
+.dark-drawer {
+  background: #0f0f0f;
 }
 
 @media (max-width: 480px) {
